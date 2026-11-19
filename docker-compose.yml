@@ -1,0 +1,30 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: septer-website
+    ports:
+      - "${PORT:-8082}:8080"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - HOST=0.0.0.0
+    volumes:
+      # Mount local data directory so demo submissions persist across restarts
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://127.0.0.1:8080/api/admin/stats', (r) => process.exit(r.statusCode === 200 ? 0 : 1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s

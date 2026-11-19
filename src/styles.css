@@ -1,0 +1,329 @@
+@import "tailwindcss" source(none);
+@source "../src";
+/* Real CNAPP pages are mounted via ShowcasePageHost — scan their classes too */
+@source "../../CNAPP/frontend/src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* brand */
+  --color-alt: var(--alt);
+  --color-navy: var(--navy);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-electric: var(--electric);
+  --color-cyan: var(--cyan);
+  --color-ink: var(--ink);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-line-dark: var(--line-dark);
+
+  /* severity (stays in blue/cyan family + red for critical) */
+  --color-sev-critical: var(--sev-critical);
+  --color-sev-high: var(--sev-high);
+  --color-sev-medium: var(--sev-medium);
+  --color-sev-low: var(--sev-low);
+  --color-sev-neutral: var(--sev-neutral);
+  --color-ok: var(--ok);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(1 0 0); /* #FFFFFF */
+  --alt: oklch(0.976 0.008 247); /* #F4F8FC */
+  --foreground: oklch(0.22 0.04 260); /* #101D32 */
+  --ink: oklch(0.22 0.04 260);
+  --navy: oklch(0.18 0.04 255); /* #071426 */
+  --surface: oklch(0.23 0.04 255); /* #0D1B2D */
+  --surface-2: oklch(0.27 0.045 255);
+  --primary: oklch(0.546 0.215 262.9); /* #2563EB */
+  --primary-foreground: oklch(1 0 0);
+  --electric: oklch(0.754 0.139 232.7); /* #38BDF8 */
+  --cyan: oklch(0.797 0.134 211.5); /* #22D3EE */
+  --on-dark: oklch(0.97 0.01 240);
+  --on-dark-muted: oklch(0.72 0.03 245);
+  --line-dark: oklch(1 0 0 / 9%);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+  --secondary: var(--alt);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--alt);
+  --muted-foreground: oklch(0.5 0.03 255);
+  --accent: oklch(0.95 0.025 250);
+  --accent-foreground: var(--primary);
+  --destructive: oklch(0.62 0.21 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0.012 250);
+  --input: oklch(0.92 0.012 250);
+  --ring: var(--primary);
+
+  --sev-critical: oklch(0.64 0.21 22);
+  --sev-high: oklch(0.6 0.2 262);
+  --sev-medium: oklch(0.75 0.14 232);
+  --sev-low: oklch(0.83 0.12 205);
+  --sev-neutral: oklch(0.62 0.03 250);
+  --ok: oklch(0.78 0.14 190);
+
+  --gradient-signal: linear-gradient(120deg, var(--primary), var(--electric) 60%, var(--cyan));
+  --shadow-dash: 0 40px 120px -30px oklch(0.18 0.04 255 / 55%), 0 0 0 1px oklch(1 0 0 / 6%);
+  --shadow-soft: 0 20px 50px -25px oklch(0.22 0.04 260 / 25%);
+  --glow-blue: 0 0 24px oklch(0.754 0.139 232.7 / 55%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  @media (pointer: fine) {
+    body.has-cursor,
+    body.has-cursor a,
+    body.has-cursor button {
+      cursor: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+  @media (min-width: 1280px) {
+    padding-inline: 4rem;
+  }
+}
+
+/* Eleven desktop-sized gaps alone exceed the available width on phones.
+   Keep row spacing and all nested horizontal scroll containers unchanged. */
+@media (max-width: 479px) {
+  main .grid-cols-12.gap-8,
+  main .grid-cols-12.gap-10,
+  footer .grid-cols-12.gap-10 {
+    column-gap: 1.5rem;
+  }
+
+  #top .inline-flex.font-mono {
+    max-width: 100%;
+  }
+}
+
+@utility text-signal {
+  background: var(--gradient-signal);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+@utility section-dark {
+  background-color: var(--navy);
+  color: var(--on-dark);
+}
+
+@utility grid-lines {
+  background-image:
+    linear-gradient(to right, oklch(0.546 0.215 262.9 / 7%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.546 0.215 262.9 / 7%) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility grid-lines-dark {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility shadow-dash {
+  box-shadow: var(--shadow-dash);
+}
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+@utility glow-blue {
+  box-shadow: var(--glow-blue);
+}
+@utility bg-signal {
+  background-image: var(--gradient-signal);
+}
+
+@utility border-beam {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--beam-angle, 0deg),
+      transparent 0 70%,
+      var(--electric) 85%,
+      var(--cyan) 92%,
+      transparent 100%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: beam 6s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@property --beam-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes beam {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+@utility flow-line {
+  stroke-dasharray: 4 8;
+  animation: dash-flow 1.6s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
+@utility live-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes scan-sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+@utility scan-sweep {
+  animation: scan-sweep 3.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Septer console tokens — match platform dark theme for the overview replica */
+.cs-console {
+  --cs-bg: #0f1115;
+  --cs-surface: #16181d;
+  --cs-surface-2: #1a1c22;
+  --cs-border: rgba(255, 255, 255, 0.08);
+  --cs-text: #f4f4f5;
+  --cs-text-2: #a1a1aa;
+  --cs-text-muted: #71717a;
+  --cs-brand: #3b82f6;
+  --cs-brand-soft: rgba(59, 130, 246, 0.14);
+  --cs-brand-border: rgba(59, 130, 246, 0.35);
+  --cs-violet: #a78bfa;
+  --cs-sev-critical: #f87171;
+  --cs-sev-high: #fb923c;
+  --cs-sev-medium: #fbbf24;
+  --cs-sev-low: #34d399;
+  isolation: isolate;
+  overflow: hidden;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  pointer-events: auto !important;
+  height: auto;
+}
+.cs-console,
+.cs-console * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.cs-console::-webkit-scrollbar,
+.cs-console *::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+.cs-sidebar-scroll {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.cs-sidebar-scroll::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}

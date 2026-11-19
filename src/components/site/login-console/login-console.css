@@ -1,0 +1,197 @@
+/**
+ * Exact Septer console tokens + utilities from CNAPP frontend/src/styles/theme.css
+ * Scoped under .cnapp-login-console so the marketing page theme is undisturbed.
+ */
+
+.cnapp-login-console {
+  /* Surfaces — neutral graphite (CNAPP console) */
+  --background: #0a0b0e;
+  --background-secondary: #111318;
+  --sidebar-background: rgba(14, 15, 18, 0.96);
+  --surface: #16181d;
+  --surface-secondary: #1a1c22;
+  --surface-elevated: #1e2128;
+  --bg-surface-elevated: #1e2128;
+  --bg-surface: #111318;
+  --bg-card: #16181d;
+  --bg-surface-hover: #252830;
+  --surface-hover: rgba(255, 255, 255, 0.04);
+  --surface-selected: rgba(59, 130, 246, 0.14);
+  --input-background: #12141a;
+  --bg-input: #12141a;
+  --glass-card: #16181d;
+  --glass-drawer: #111318;
+
+  /* Brand — Signal Blue */
+  --brand-primary: #3b82f6;
+  --brand-hover: #2563eb;
+  --brand-active: #1d4ed8;
+  --brand-soft: rgba(59, 130, 246, 0.14);
+  --brand-border: rgba(59, 130, 246, 0.42);
+
+  /* Typography */
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-disabled: #52525b;
+
+  /* Borders */
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-active: #3b82f6;
+  --border-glass-highlight: rgba(255, 255, 255, 0.06);
+
+  --glass-highlight: rgba(255, 255, 255, 0.04);
+  --glass-red-reflection: rgba(59, 130, 246, 0.06);
+  --ambient-red: rgba(59, 130, 246, 0.04);
+  --ambient-glow: rgba(16, 185, 129, 0.03);
+  --brand-glow: rgba(59, 130, 246, 0.18);
+  --brand-glow-strong: rgba(59, 130, 246, 0.28);
+  --ambient-grid: rgba(255, 255, 255, 0.025);
+
+  --focus-ring: #3b82f6;
+  --color-primary-foreground: #ffffff;
+
+  --support-amber: #fbbf24;
+  --support-violet: #a78bfa;
+  --support-steel: #38bdf8;
+  --support-sage: #34d399;
+  --support-coral: #fb923c;
+  --support-rose: #fb7185;
+  --support-cyan: #22d3ee;
+
+  --severity-critical: #f87171;
+  --severity-high: #fb923c;
+  --severity-medium: #fbbf24;
+  --severity-low: #34d399;
+  --severity-info: #38bdf8;
+
+  --status-success: #34d399;
+  --status-warning: #fbbf24;
+  --status-danger: #f87171;
+  --status-info: #38bdf8;
+  --status-neutral: #a1a1aa;
+
+  --cloud-aws: #ff9900;
+  --cloud-azure: #0089d6;
+  --cloud-gcp: #4285f4;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.55);
+
+  --transition-fast: 150ms ease;
+
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+}
+
+.cnapp-login-console .font-heading {
+  font-family: var(--font-heading);
+}
+
+.cnapp-login-console .font-mono {
+  font-family: var(--font-mono);
+}
+
+.cnapp-login-console .glass-surface,
+.cnapp-login-console .glass-panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border-default);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    var(--shadow-sm);
+}
+
+.cnapp-login-console .luminous-bg {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(1000px 520px at 12% -6%, var(--ambient-red) 0%, transparent 62%),
+    radial-gradient(800px 420px at 88% 8%, var(--brand-glow) 0%, transparent 58%),
+    radial-gradient(
+      700px 500px at 70% 100%,
+      color-mix(in srgb, var(--brand-primary) 10%, transparent) 0%,
+      transparent 65%
+    );
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+
+.cnapp-login-console ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.cnapp-login-console ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cnapp-login-console ::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-sm);
+}
+.cnapp-login-console ::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Showcase content: product pages expect a desktop content column */
+.cnapp-login-console [data-showcase-shell] {
+  min-width: 0;
+}
+.cnapp-login-console [data-showcase-shell] main {
+  scrollbar-width: thin;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.cnapp-login-console [data-showcase] {
+  min-width: 0;
+  width: 100%;
+}
+/* Tables / dense IAM panels must not blow the frame */
+.cnapp-login-console [data-showcase] table {
+  width: 100%;
+}
+.cnapp-login-console [data-showcase] .overflow-x-auto {
+  max-width: 100%;
+}
+
+.cnapp-login-console .glass-button-primary {
+  position: relative;
+  background: linear-gradient(180deg, var(--brand-primary) 0%, var(--brand-hover) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-primary-foreground, #ffffff);
+  font-weight: 600;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 2px 8px var(--brand-glow);
+  transition: all var(--transition-fast);
+}
+.cnapp-login-console .glass-button-primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, var(--brand-hover) 0%, var(--brand-active) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 4px 14px var(--brand-glow-strong);
+}
+.cnapp-login-console .glass-button-primary:active:not(:disabled) {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.cnapp-login-console .glass-button-secondary {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+.cnapp-login-console .glass-button-secondary:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
