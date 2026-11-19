@@ -1,20 +1,36 @@
+# ==============================================================================
+# Septer CNAPP Website - Multi-Container Docker Compose Stack
+# ==============================================================================
+# Services:
+#   1. backend:  Express API + PostgreSQL 16 connection + Nodemailer SMTP (port 5005)
+#   2. frontend: SSR TanStack Start & Marketing Showcase (port 8082 -> 8080)
+# ==============================================================================
+
 services:
-  web:
+  backend:
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
-    container_name: septer-website
+    container_name: septer-website-backend
     ports:
-      - "${PORT:-8082}:8080"
+      - "5005:5005"
     env_file:
-      - .env
+      - path: ./backend/.env
+        required: false
     environment:
       - NODE_ENV=production
-      - PORT=8080
-      - HOST=0.0.0.0
-    volumes:
-      # Mount local data directory so demo submissions persist across restarts
-      - ./data:/app/data
+      - PORT=5005
+      # Connects by default to PostgreSQL 16 on the host (cnapp-postgres on port 5433)
+      - DATABASE_URL=${DATABASE_URL:-postgresql://cnapp_admin:SecureCnappPassword2026!@host.docker.internal:5433/cnapp_website_db}
+      - SMTP_HOST=${SMTP_HOST:-smtp.gmail.com}
+      - SMTP_PORT=${SMTP_PORT:-465}
+      - SMTP_SECURE=${SMTP_SECURE:-true}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASS=${SMTP_PASS:-}
+      - SMTP_FROM=${SMTP_FROM:-"Septer Security Team" <no-reply@septer.io>}
+      - NOTIFICATION_EMAIL=${NOTIFICATION_EMAIL:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
     healthcheck:
       test:
@@ -22,7 +38,36 @@ services:
           "CMD",
           "node",
           "-e",
-          "require('http').get('http://127.0.0.1:8080/api/admin/stats', (r) => process.exit(r.statusCode === 200 ? 0 : 1))",
+          "require('http').get('http://127.0.0.1:5005/api/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: septer-website-frontend
+    ports:
+      - "${PORT:-8082}:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - HOST=0.0.0.0
+      - BACKEND_URL=http://backend:5005
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://127.0.0.1:8080/', (r) => process.exit(r.statusCode === 200 ? 0 : 1))",
         ]
       interval: 15s
       timeout: 5s

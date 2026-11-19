@@ -1,0 +1,66 @@
+[
+  {
+    "id": "req_cs_94102",
+    "fullName": "Sarah Jenkins",
+    "email": "s.jenkins@finovatech.io",
+    "company": "Finova Financial",
+    "cloudProviders": [
+      "AWS",
+      "GCP"
+    ],
+    "interest": "CIEM Effective Access & Attack Path Graph",
+    "notes": "Evaluating multi-cloud identity risk across 400+ AWS accounts. Requesting deep dive into choke points.",
+    "status": "new",
+    "priority": "high",
+    "createdAt": "2026-11-19T11:47:05.630Z",
+    "assignedTo": "Alex Mercer (Principal Solutions Architect)"
+  },
+  {
+    "id": "req_cs_93881",
+    "fullName": "Marcus Vance",
+    "email": "m.vance@aerocore-defense.com",
+    "company": "AeroCore Systems",
+    "cloudProviders": [
+      "AWS",
+      "Azure"
+    ],
+    "interest": "Agentless SideScanning & CWPP",
+    "notes": "Requires zero-impact workload inspection on live production clusters without host agents.",
+    "status": "demo_scheduled",
+    "priority": "critical",
+    "createdAt": "2026-11-19T08:21:05.631Z",
+    "assignedTo": "Elena Rostova (Director of SecOps)"
+  },
+  {
+    "id": "req_cs_92715",
+    "fullName": "Dr. Aris Thorne",
+    "email": "athorne@healthnexus.org",
+    "company": "Nexus Health Networks",
+    "cloudProviders": [
+      "Azure",
+      "GCP"
+    ],
+    "interest": "DSPM & Sensitive Data Exposure",
+    "notes": "HIPAA and SOC2 Type II compliance audit upcoming in Q3. Interested in automated evidence exports.",
+    "status": "contacted",
+    "priority": "high",
+    "createdAt": "2026-11-18T14:21:05.631Z",
+    "assignedTo": "Devon Reed (Enterprise AE)"
+  },
+  {
+    "id": "req_cs_91040",
+    "fullName": "Kevin Zhao",
+    "email": "kevin.zhao@cloudlogistics.net",
+    "company": "CloudLogistics Global",
+    "cloudProviders": [
+      "AWS",
+      "Multi-Cloud"
+    ],
+    "interest": "Controlled Remediation & SOAR Guardrails",
+    "notes": "Wants to test two-person approval workflows before deploying automated Terraform fixes.",
+    "status": "qualified",
+    "priority": "medium",
+    "createdAt": "2026-11-17T12:21:05.631Z",
+    "assignedTo": "Alex Mercer (Principal Solutions Architect)"
+  }
+]

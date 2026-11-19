@@ -122,13 +122,22 @@ describe("Backend Storage & API", () => {
   });
 
   it("handles PATCH /api/demo-requests/:id to update triage status", async () => {
-    const created = createSubmission({
-      fullName: "Alice Smith",
-      email: "alice@fintech.io",
-      company: "Fintech Org",
+    // Create lead through handleApiRequest
+    const createReq = new Request("http://localhost:8080/api/demo-requests", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fullName: "Alice Smith",
+        email: "alice@fintech.io",
+        company: "Fintech Org",
+      }),
     });
+    const createRes = await handleApiRequest(createReq);
+    expect(createRes?.status).toBe(201);
+    const createJson = await createRes?.json();
+    const targetId = createJson.data.id;
 
-    const request = new Request(`http://localhost:8080/api/demo-requests/${created.id}`, {
+    const request = new Request(`http://localhost:8080/api/demo-requests/${targetId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: "qualified" }),

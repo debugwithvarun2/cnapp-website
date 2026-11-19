@@ -43,6 +43,36 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
     });
   }
 
+  // Forward to Dedicated Express Backend with PostgreSQL
+  const backendBase = process.env.BACKEND_URL || process.env.VITE_BACKEND_URL || "http://localhost:5005";
+  try {
+    const targetUrl = `${backendBase}${pathname}${url.search}`;
+    const fHeaders = new Headers(request.headers);
+    fHeaders.set("host", new URL(backendBase).host);
+
+    const bodyBuffer =
+      request.method !== "GET" && request.method !== "HEAD"
+        ? await request.clone().arrayBuffer()
+        : undefined;
+
+    const backendRes = await fetch(targetUrl, {
+      method: request.method,
+      headers: fHeaders,
+      body: bodyBuffer,
+    });
+
+    const resHeaders = new Headers(backendRes.headers);
+    resHeaders.set("Access-Control-Allow-Origin", "*");
+    const respData = await backendRes.arrayBuffer();
+
+    return new Response(respData, {
+      status: backendRes.status,
+      headers: resHeaders,
+    });
+  } catch {
+    // If backend is unreachable, gracefully fall back to local handler below
+  }
+
   // Route: /api/admin/stats
   if (pathname === "/api/admin/stats" && request.method === "GET") {
     const stats = getStats();

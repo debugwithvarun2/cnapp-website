@@ -1,0 +1,144 @@
+[
+  {
+    "id": "req_septer_mwnir4n0_4f3b",
+    "fullName": "Alice Smith",
+    "email": "alice@fintech.io",
+    "company": "Fintech Org",
+    "cloudProviders": [],
+    "interest": "",
+    "status": "qualified",
+    "createdAt": "2026-11-19T12:21:05.724Z",
+    "ip": "::1",
+    "userAgent": "node"
+  },
+  {
+    "id": "req_septer_mwnir4m4_qopp",
+    "fullName": "Marcus Aurelius",
+    "email": "marcus@rome.corp",
+    "company": "Roman Empire Security",
+    "cloudProviders": [
+      "AWS",
+      "GCP"
+    ],
+    "interest": "DSPM & CIEM",
+    "notes": "",
+    "status": "new",
+    "priority": "high",
+    "createdAt": "2026-11-19T12:21:05.692Z",
+    "assignedTo": "Unassigned (New Inbound)",
+    "ip": "::1",
+    "userAgent": "node"
+  },
+  {
+    "id": "req_septer_mwniqoaq_2gm5",
+    "fullName": "Alice Smith",
+    "email": "alice@fintech.io",
+    "company": "Fintech Org",
+    "cloudProviders": [],
+    "interest": "",
+    "status": "qualified",
+    "createdAt": "2026-11-19T12:20:44.546Z",
+    "ip": "::1",
+    "userAgent": "node"
+  },
+  {
+    "id": "req_septer_mwniqo9e_ie12",
+    "fullName": "Marcus Aurelius",
+    "email": "marcus@rome.corp",
+    "company": "Roman Empire Security",
+    "cloudProviders": [
+      "AWS",
+      "GCP"
+    ],
+    "interest": "DSPM & CIEM",
+    "notes": "",
+    "status": "new",
+    "priority": "high",
+    "createdAt": "2026-11-19T12:20:44.498Z",
+    "assignedTo": "Unassigned (New Inbound)",
+    "ip": "::1",
+    "userAgent": "node"
+  },
+  {
+    "id": "req_septer_mwniplef_2ifl",
+    "fullName": "Marcus Aurelius",
+    "email": "marcus@rome.corp",
+    "company": "Roman Empire Security",
+    "cloudProviders": [
+      "AWS",
+      "GCP"
+    ],
+    "interest": "DSPM & CIEM",
+    "notes": "",
+    "status": "new",
+    "priority": "high",
+    "createdAt": "2026-11-19T12:19:54.135Z",
+    "assignedTo": "Unassigned (New Inbound)",
+    "ip": "::1",
+    "userAgent": "node"
+  },
+  {
+    "id": "req_cs_94102",
+    "fullName": "Sarah Jenkins",
+    "email": "s.jenkins@finovatech.io",
+    "company": "Finova Financial",
+    "cloudProviders": [
+      "AWS",
+      "GCP"
+    ],
+    "interest": "CIEM Effective Access & Attack Path Graph",
+    "notes": "Evaluating multi-cloud identity risk across 400+ AWS accounts. Requesting deep dive into choke points.",
+    "status": "new",
+    "priority": "high",
+    "createdAt": "2026-11-19T11:03:27.447Z",
+    "assignedTo": "Alex Mercer (Principal Solutions Architect)"
+  },
+  {
+    "id": "req_cs_93881",
+    "fullName": "Marcus Vance",
+    "email": "m.vance@aerocore-defense.com",
+    "company": "AeroCore Systems",
+    "cloudProviders": [
+      "AWS",
+      "Azure"
+    ],
+    "interest": "Agentless SideScanning & CWPP",
+    "notes": "Requires zero-impact workload inspection on live production clusters without host agents.",
+    "status": "demo_scheduled",
+    "priority": "critical",
+    "createdAt": "2026-11-19T07:37:27.448Z",
+    "assignedTo": "Elena Rostova (Director of SecOps)"
+  },
+  {
+    "id": "req_cs_92715",
+    "fullName": "Dr. Aris Thorne",
+    "email": "athorne@healthnexus.org",
+    "company": "Nexus Health Networks",
+    "cloudProviders": [
+      "Azure",
+      "GCP"
+    ],
+    "interest": "DSPM & Sensitive Data Exposure",
+    "notes": "HIPAA and SOC2 Type II compliance audit upcoming in Q3. Interested in automated evidence exports.",
+    "status": "contacted",
+    "priority": "high",
+    "createdAt": "2026-11-18T13:37:27.448Z",
+    "assignedTo": "Devon Reed (Enterprise AE)"
+  },
+  {
+    "id": "req_cs_91040",
+    "fullName": "Kevin Zhao",
+    "email": "kevin.zhao@cloudlogistics.net",
+    "company": "CloudLogistics Global",
+    "cloudProviders": [
+      "AWS",
+      "Multi-Cloud"
+    ],
+    "interest": "Controlled Remediation & SOAR Guardrails",
+    "notes": "Wants to test two-person approval workflows before deploying automated Terraform fixes.",
+    "status": "qualified",
+    "priority": "medium",
+    "createdAt": "2026-11-17T11:37:27.448Z",
+    "assignedTo": "Alex Mercer (Principal Solutions Architect)"
+  }
+]
