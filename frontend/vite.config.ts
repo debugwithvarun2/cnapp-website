@@ -217,12 +217,6 @@ export default defineConfig({
     }),
     viteReact(),
     tailwindcss(),
-    nitro({
-      routeRules: {
-        "/api/**": {
-          proxy: `${BACKEND_URL}/api/**`,
-        },
-      },
-    }),
+    nitro(),
   ],
 });

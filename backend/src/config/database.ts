@@ -82,7 +82,7 @@ export function isDatabaseConnected(): boolean {
 }
 
 export async function seedFromInitialData(client?: pg.PoolClient): Promise<void> {
-  const seedFile = path.resolve(__dirname, "../../data/submissions.json");
+  const seedFile = path.resolve(process.cwd(), "data/submissions.json");
   if (!fs.existsSync(seedFile)) return;
 
   try {

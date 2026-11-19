@@ -13,7 +13,7 @@ services:
       dockerfile: Dockerfile
     container_name: septer-website-backend
     ports:
-      - "5005:5005"
+      - "${BACKEND_PORT:-5006}:5005"
     env_file:
       - path: ./backend/.env
         required: false
@@ -51,7 +51,7 @@ services:
       dockerfile: Dockerfile
     container_name: septer-website-frontend
     ports:
-      - "${PORT:-8082}:8080"
+      - "${FRONTEND_PORT:-8082}:8080"
     environment:
       - NODE_ENV=production
       - PORT=8080

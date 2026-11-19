@@ -3,8 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { pool, isDatabaseConnected, DemoSubmissionRecord, seedFromInitialData } from "../config/database";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = path.resolve(__dirname, "../../data");
+const DATA_DIR = path.resolve(process.cwd(), "data");
 const DATA_FILE = path.join(DATA_DIR, "submissions.json");
 
 function ensureFileStorage(): void {
@@ -215,7 +214,7 @@ export async function resetToSeedData(): Promise<DemoSubmissionRecord[]> {
     }
   }
 
-  const seedFile = path.resolve(__dirname, "../../data/submissions.json");
+  const seedFile = path.resolve(process.cwd(), "data/submissions.json");
   if (fs.existsSync(seedFile)) {
     const raw = fs.readFileSync(seedFile, "utf-8");
     writeFileStorage(JSON.parse(raw));

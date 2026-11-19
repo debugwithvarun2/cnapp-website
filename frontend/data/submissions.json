@@ -12,7 +12,7 @@
     "notes": "Evaluating multi-cloud identity risk across 400+ AWS accounts. Requesting deep dive into choke points.",
     "status": "new",
     "priority": "high",
-    "createdAt": "2026-11-19T11:47:05.630Z",
+    "createdAt": "2026-11-19T11:55:20.205Z",
     "assignedTo": "Alex Mercer (Principal Solutions Architect)"
   },
   {
@@ -28,7 +28,7 @@
     "notes": "Requires zero-impact workload inspection on live production clusters without host agents.",
     "status": "demo_scheduled",
     "priority": "critical",
-    "createdAt": "2026-11-19T08:21:05.631Z",
+    "createdAt": "2026-11-19T08:29:20.206Z",
     "assignedTo": "Elena Rostova (Director of SecOps)"
   },
   {
@@ -44,7 +44,7 @@
     "notes": "HIPAA and SOC2 Type II compliance audit upcoming in Q3. Interested in automated evidence exports.",
     "status": "contacted",
     "priority": "high",
-    "createdAt": "2026-11-18T14:21:05.631Z",
+    "createdAt": "2026-11-18T14:29:20.206Z",
     "assignedTo": "Devon Reed (Enterprise AE)"
   },
   {
@@ -60,7 +60,7 @@
     "notes": "Wants to test two-person approval workflows before deploying automated Terraform fixes.",
     "status": "qualified",
     "priority": "medium",
-    "createdAt": "2026-11-17T12:21:05.631Z",
+    "createdAt": "2026-11-17T12:29:20.206Z",
     "assignedTo": "Alex Mercer (Principal Solutions Architect)"
   }
 ]
