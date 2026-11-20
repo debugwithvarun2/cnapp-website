@@ -50,7 +50,7 @@ Last Updated: November 20, 2026
 - [x] In-page anchor navigation: `#top`, `#platform`, `#multicloud`, `#how`, `#sidescan`, `#attack`, `#score`, `#secops`, `#compliance`, `#challenge`, `#demo`.
 - [x] Interactive Demo Request Form at `#demo` with instant confirmation card.
 - [x] Leads Admin Portal at `/admin` with live search, filters (status, priority, cloud), and status triage.
-- [x] Branding: Pure Septer vector logo without shapes, boxes, or masks.
+- [x] Branding: Pure Septer logo emblem with complete 6-sided hexagon, 3D isometric bevels, and transparent safety padding (no clipping or cutoffs across any screen resolution).
 - [x] Removed "Admin Console" and "Access Admin Panel" links from public footer and marketing CTA.
 
 ### 5. Multi-Container Docker Stack
